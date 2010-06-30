@@ -1,3 +1,13 @@
 cache/
 files/
 images/avatars/upload/
+
+flash_goban.js
+flashgoban.js
+goswf.js
+goswf.swf
+goswf_gadget.xml
+includes/goswf.js
+includes/goswf.swf
+includes/goswf_gadget.xml
+sgf_view.swf
