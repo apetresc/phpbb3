@@ -172,6 +172,7 @@ class ucp_prefs
 					'post_sk'		=> request_var('post_sk', (!empty($user->data['user_post_sortby_type'])) ? $user->data['user_post_sortby_type'] : 't'),
 					'post_sd'		=> request_var('post_sd', (!empty($user->data['user_post_sortby_dir'])) ? $user->data['user_post_sortby_dir'] : 'a'),
 					'post_st'		=> request_var('post_st', (!empty($user->data['user_post_show_days'])) ? $user->data['user_post_show_days'] : 0),
+					'posts_pp'		=> request_var('posts_pp', (!empty($user->data['user_posts_per_page'])) ? $user->data['user_posts_per_page'] : 0),
 
 					'images'		=> request_var('images', (bool) $user->optionget('viewimg')),
 					'flash'			=> request_var('flash', (bool) $user->optionget('viewflash')),
@@ -217,6 +218,7 @@ class ucp_prefs
 
 							'user_topic_show_days'	=> $data['topic_st'],
 							'user_post_show_days'	=> $data['post_st'],
+							'user_posts_per_page' => $data['posts_pp'],
 						);
 
 						$sql = 'UPDATE ' . USERS_TABLE . '
@@ -292,7 +294,8 @@ class ucp_prefs
 					'S_TOPIC_SORT_DIR'		=> $s_sort_topic_dir,
 					'S_POST_SORT_DAYS'		=> $s_limit_post_days,
 					'S_POST_SORT_KEY'		=> $s_sort_post_key,
-					'S_POST_SORT_DIR'		=> $s_sort_post_dir)
+					'S_POST_SORT_DIR'		=> $s_sort_post_dir,
+					'S_POSTS_PER_PAGE'		=> $user->data['user_posts_per_page'])
 				);
 
 			break;

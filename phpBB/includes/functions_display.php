@@ -650,6 +650,7 @@ function topic_generate_pagination($replies, $url)
 	global $config, $user;
 
 	// Make sure $per_page is a valid value
+	$config['posts_per_page'] = $user->data['user_posts_per_page'];
 	$per_page = ($config['posts_per_page'] <= 0) ? 1 : $config['posts_per_page'];
 
 	if (($replies + 1) > $per_page)
