@@ -96,6 +96,49 @@
 					<td><!-- IF ACTIVE_TOPIC --><b><a class="gen" href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></b><br /><span class="genmed">[ {ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT} ]</span><!-- ELSE --><span class="gen">-</span><!-- ENDIF --></td>
 				</tr>
 			<!-- ENDIF -->
+            <script type="text/JavaScript">
+function getElement(iElementId)
+{
+   if (document.all) 
+   {
+      return document.all[iElementId];
+   }
+   if (document.getElementById)
+   {
+      return document.getElementById(iElementId);
+   }
+}
+
+function toggleElement(oElement)
+{
+   if (oElement.style.display == "none")
+   {
+      oElement.style.display = "";
+   }
+   else
+   {
+      oElement.style.display = "none";
+   }
+}
+</script>
+				<tr>
+					<td class="gen" align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap">{L_GIVEN}: </td>
+					<td><span class="gen"><b>{POSTER_GIVE_COUNT}</b> {L_THANKS}</span><br /><!-- IF POSTER_GIVE_COUNT and THANKS_PROFILELIST_VIEW --><a href="javascript: toggleElement( getElement('show_thanks'));">{L_THANKS_LIST}</a>
+						<div id="show_thanks" style="display: none;">
+							{THANKS}
+						</div>
+						<!-- ENDIF -->
+					</td>
+				</tr>
+				<tr>
+					<td class="gen" align="{S_CONTENT_FLOW_END}" valign="top" nowrap="nowrap">{L_RECEIVED}: </td>
+					<td><span class="gen"><b>{POSTER_RECEIVE_COUNT}</b> {L_THANKS}</span><br /><!-- IF POSTER_RECEIVE_COUNT and THANKS_PROFILELIST_VIEW --><a href="javascript: toggleElement( getElement('show_thanked'));">{L_THANKS_LIST}</a>
+						<div id="show_thanked" style="display: none;">
+							{THANKED}
+						</div>
+						<!-- ENDIF -->
+					</td>
+				</tr>
 			</table>
 		</td>
 	</tr>

@@ -51,6 +51,7 @@ class ucp_prefs
 					'notifypm'		=> request_var('notifypm', (bool) $user->data['user_notify_pm']),
 					'popuppm'		=> request_var('popuppm', (bool) $user->optionget('popuppm')),
 					'allowpm'		=> request_var('allowpm', (bool) $user->data['user_allow_pm']),
+                    'allowthankspm' => request_var('allowthankspm', (bool) $user->data['user_allow_thanks_pm']),
 				);
 
 				if ($data['notifymethod'] == NOTIFY_IM && (!$config['jab_enable'] || !$user->data['user_jabber'] || !@extension_loaded('xml')))
@@ -80,6 +81,7 @@ class ucp_prefs
 
 						$sql_ary = array(
 							'user_allow_pm'			=> $data['allowpm'],
+                            'user_allow_thanks_pm'  => $data['allowthankspm'],
 							'user_allow_viewemail'	=> $data['viewemail'],
 							'user_allow_massemail'	=> $data['massemail'],
 							'user_allow_viewonline'	=> ($auth->acl_get('u_hideonline')) ? !$data['hideonline'] : $user->data['user_allow_viewonline'],
@@ -136,6 +138,7 @@ class ucp_prefs
 					'S_VIEW_EMAIL'		=> $data['viewemail'],
 					'S_MASS_EMAIL'		=> $data['massemail'],
 					'S_ALLOW_PM'		=> $data['allowpm'],
+                    'S_ALLOW_THANKS_PM' => $data['allowthankspm'],
 					'S_HIDE_ONLINE'		=> $data['hideonline'],
 					'S_NOTIFY_PM'		=> $data['notifypm'],
 					'S_POPUP_PM'		=> $data['popuppm'],

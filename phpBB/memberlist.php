@@ -656,7 +656,10 @@ switch ($mode)
 			}
 		}
 
-		// Inactive reason/account?
+        include($phpbb_root_path . 'includes/functions_thanks.' . $phpEx);
+        $user->add_lang('mods/thanks_mod');
+        output_thanks_memberlist($user_id);
+        // Inactive reason/account?
 		if ($member['user_type'] == USER_INACTIVE)
 		{
 			$user->add_lang('acp/common');

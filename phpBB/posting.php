@@ -1555,6 +1555,7 @@ function handle_post_delete($forum_id, $topic_id, $post_id, &$post_data)
 			);
 
 			$next_post_id = delete_post($forum_id, $topic_id, $post_id, $data);
+            delete_post_thanks($post_id);
 			$post_username = ($post_data['poster_id'] == ANONYMOUS && !empty($post_data['post_username'])) ? $post_data['post_username'] : $post_data['username'];
 
 			if ($next_post_id === false)

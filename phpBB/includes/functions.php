@@ -4155,6 +4155,7 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 
 	// Send a proper content-language to the output
 	$user_lang = $user->lang['USER_LANG'];
+    $user->add_lang('mods/thanks_mod');
 	if (strpos($user_lang, '-x-') !== false)
 	{
 		$user_lang = substr($user_lang, 0, strpos($user_lang, '-x-'));
@@ -4164,6 +4165,7 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 	$template->assign_vars(array(
 		'SITENAME'						=> $config['sitename'],
 		'SITE_DESCRIPTION'				=> $config['site_desc'],
+		'COPY'							=> $user->lang['COPY'],
 		'PAGE_TITLE'					=> $page_title,
 		'SCRIPT_NAME'					=> str_replace('.' . $phpEx, '', $user->page['page_name']),
 		'LAST_VISIT_DATE'				=> sprintf($user->lang['YOU_LAST_VISIT'], $s_last_visit),
@@ -4194,6 +4196,7 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'U_POPUP_PM'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=popup'),
 		'UA_POPUP_PM'			=> addslashes(append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=popup')),
 		'U_MEMBERLIST'			=> append_sid("{$phpbb_root_path}memberlist.$phpEx"),
+        'U_THANKSLIST'          => append_sid("{$phpbb_root_path}thankslist.$phpEx"),
 		'U_VIEWONLINE'			=> ($auth->acl_gets('u_viewprofile', 'a_user', 'a_useradd', 'a_userdel')) ? append_sid("{$phpbb_root_path}viewonline.$phpEx") : '',
 		'U_LOGIN_LOGOUT'		=> $u_login_logout,
 		'U_INDEX'				=> append_sid("{$phpbb_root_path}index.$phpEx"),
@@ -4232,6 +4235,7 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'S_DISPLAY_SEARCH'		=> (!$config['load_search']) ? 0 : (isset($auth) ? ($auth->acl_get('u_search') && $auth->acl_getf_global('f_search')) : 1),
 		'S_DISPLAY_PM'			=> ($config['allow_privmsg'] && !empty($user->data['is_registered']) && ($auth->acl_get('u_readpm') || $auth->acl_get('u_sendpm'))) ? true : false,
 		'S_DISPLAY_MEMBERLIST'	=> (isset($auth)) ? $auth->acl_get('u_viewprofile') : 0,
+        'S_DISPLAY_THANKSLIST'  => (isset($auth)) ? $auth->acl_get('u_viewthanks') : 0,
 		'S_NEW_PM'				=> ($s_privmsg_new) ? 1 : 0,
 		'S_REGISTER_ENABLED'	=> ($config['require_activation'] != USER_ACTIVATION_DISABLE) ? true : false,
 		'S_FORUM_ID'			=> $forum_id,
