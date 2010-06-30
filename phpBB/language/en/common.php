@@ -132,6 +132,7 @@ $lang = array_merge($lang, array(
 	'CONNECTION_SUCCESS'	=> 'Connection was successful!',
 	'COOKIES_DELETED'		=> 'All board cookies successfully deleted.',
 	'CURRENT_TIME'			=> 'It is currently %s',
+	'COPY'					=> 'Click and copy this link',
 
 	'DAY'					=> 'Day',
 	'DAYS'					=> 'Days',
